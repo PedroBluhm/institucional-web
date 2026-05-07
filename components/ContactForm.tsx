@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, startTransition, useState } from "react";
+import { FormEvent, useState } from "react";
 
 const initialValues = {
   name: "",
@@ -16,32 +16,36 @@ export default function ContactForm() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    startTransition(() => {
-      setSubmitted(true);
-      setValues(initialValues);
-    });
+    const subject = encodeURIComponent(
+      `[Briefing] ${values.company || values.name}`,
+    );
+    const body = encodeURIComponent(
+      `Nome: ${values.name}\nEmpresa: ${values.company}\nE-mail: ${values.email}\n\n${values.message}`,
+    );
+
+    window.location.href = `mailto:comercial@bluhmwerk.com?subject=${subject}&body=${body}`;
+
+    setSubmitted(true);
+    setValues(initialValues);
   };
 
   return (
-    <div className="glass-panel p-5 md:p-7">
-      <div className="mb-8">
-        <p className="text-sm uppercase tracking-[0.24em] text-white/42">
-          Briefing inicial
-        </p>
-        <h3 className="mt-4 text-3xl font-semibold text-white">
-          Conte o que voce precisa construir.
+    <div className="surface-card p-6 md:p-8">
+      <div className="mb-7">
+        <span className="eyebrow">Briefing inicial</span>
+        <h3 className="mt-5 font-display text-2xl font-semibold leading-tight text-white md:text-3xl">
+          Conte o que você precisa construir.
         </h3>
-        <p className="mt-3 max-w-[34rem] text-sm leading-7 text-white/58">
-          Preencha os campos abaixo para estruturar um primeiro contato. O
-          formulario esta preparado como front-end e pode ser conectado depois
-          ao seu CRM, e-mail ou API.
+        <p className="mt-3 max-w-[32rem] text-sm leading-7 text-white/58">
+          Resposta estimada em até 1 dia útil. Para projetos urgentes, fale
+          direto com o comercial pelo telefone abaixo.
         </p>
       </div>
 
       <form className="grid gap-4" onSubmit={handleSubmit}>
         <div className="grid gap-4 md:grid-cols-2">
           <label className="space-y-2">
-            <span className="text-xs uppercase tracking-[0.22em] text-white/42">
+            <span className="text-[0.7rem] uppercase tracking-[0.22em] text-white/42">
               Nome
             </span>
             <input
@@ -60,7 +64,7 @@ export default function ContactForm() {
           </label>
 
           <label className="space-y-2">
-            <span className="text-xs uppercase tracking-[0.22em] text-white/42">
+            <span className="text-[0.7rem] uppercase tracking-[0.22em] text-white/42">
               Empresa
             </span>
             <input
@@ -79,8 +83,8 @@ export default function ContactForm() {
         </div>
 
         <label className="space-y-2">
-          <span className="text-xs uppercase tracking-[0.22em] text-white/42">
-            E-mail
+          <span className="text-[0.7rem] uppercase tracking-[0.22em] text-white/42">
+            E-mail corporativo
           </span>
           <input
             type="email"
@@ -98,8 +102,8 @@ export default function ContactForm() {
         </label>
 
         <label className="space-y-2">
-          <span className="text-xs uppercase tracking-[0.22em] text-white/42">
-            Mensagem
+          <span className="text-[0.7rem] uppercase tracking-[0.22em] text-white/42">
+            Contexto e objetivo
           </span>
           <textarea
             required
@@ -110,20 +114,21 @@ export default function ContactForm() {
                 message: event.target.value,
               }))
             }
-            placeholder="Descreva o produto, problema operacional ou oportunidade que voce quer resolver."
-            rows={6}
-            className="form-input min-h-[170px] resize-none"
+            placeholder="Descreva a operação, o problema e o resultado esperado."
+            rows={5}
+            className="form-input min-h-[150px] resize-none"
           />
         </label>
 
-        <div className="mt-2 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <button type="submit" className="primary-link justify-center">
+        <div className="mt-2 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <button type="submit" className="btn-primary">
             Enviar briefing
+            <span aria-hidden="true">→</span>
           </button>
-          <p className="text-sm text-white/48">
+          <p className="text-xs text-white/48">
             {submitted
-              ? "Mensagem registrada no front-end. Conecte agora esse formulario ao seu endpoint preferido."
-              : "Resposta estimada: ate 1 dia util."}
+              ? "Cliente de e-mail aberto com o briefing pronto."
+              : "Os dados não saem do navegador até você confirmar o envio."}
           </p>
         </div>
       </form>
