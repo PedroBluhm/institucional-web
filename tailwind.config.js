@@ -10,13 +10,20 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        surface: "var(--surface)",
+        steel: {
+          DEFAULT: "var(--steel)",
+          light: "var(--steel-light)",
+          pale: "var(--steel-pale)",
+        },
+        signal: "var(--signal)",
       },
       fontFamily: {
-        sans: ["var(--font-instrument-sans)", "sans-serif"],
-        display: ["var(--font-space-grotesk)", "sans-serif"],
+        sans: ["var(--font-instrument-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 24px 80px rgba(18, 32, 78, 0.45)",
+        glow: "0 24px 80px rgba(15, 26, 44, 0.55)",
       },
     },
   },

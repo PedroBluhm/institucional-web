@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 480" role="img" aria-label="Painel operacional Bluhmwerk">
+  <defs>
+    <linearGradient id="dashBg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#0B1626"/>
+      <stop offset="1" stop-color="#070E1B"/>
+    </linearGradient>
+    <linearGradient id="dashAccent" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#7AA9D8"/>
+      <stop offset="1" stop-color="#7DEBC1"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="480" rx="20" fill="url(#dashBg)"/>
+  <rect x="20" y="20" width="680" height="44" rx="10" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="40" cy="42" r="5" fill="#FF6B6B"/>
+  <circle cx="56" cy="42" r="5" fill="#FFC65A"/>
+  <circle cx="72" cy="42" r="5" fill="#7DEBC1"/>
+  <text x="100" y="47" font-family="'Space Grotesk', sans-serif" font-size="13" fill="rgba(255,255,255,0.7)" letter-spacing="2">PALLET CONTROL · OPERAÇÃO</text>
+
+  <rect x="20" y="80" width="160" height="380" rx="14" fill="rgba(255,255,255,0.03)"/>
+  <g transform="translate(36,104)" font-family="'Space Grotesk', sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">
+    <rect x="0" y="0" width="128" height="28" rx="6" fill="rgba(122,169,216,0.18)"/>
+    <text x="14" y="18" fill="#A6C4DD">Dashboard</text>
+    <text x="14" y="58">Operadores</text>
+    <text x="14" y="92">Plantas</text>
+    <text x="14" y="126">Movimentações</text>
+    <text x="14" y="160">Conferências</text>
+    <text x="14" y="194">Ordens de serviço</text>
+    <text x="14" y="228">Importação XML</text>
+    <text x="14" y="262">Relatórios</text>
+  </g>
+
+  <rect x="200" y="80" width="500" height="120" rx="14" fill="rgba(255,255,255,0.04)"/>
+  <g transform="translate(220,104)" font-family="'Space Grotesk', sans-serif">
+    <text x="0" y="0" font-size="11" fill="rgba(255,255,255,0.5)" letter-spacing="2">ATIVOS EM CIRCULAÇÃO</text>
+    <text x="0" y="40" font-size="36" font-weight="700" fill="#F4F6FA">12.847</text>
+    <text x="0" y="68" font-size="12" fill="#7DEBC1">▲ 4,2% vs. semana anterior</text>
+  </g>
+  <g transform="translate(460,104)" font-family="'Space Grotesk', sans-serif">
+    <text x="0" y="0" font-size="11" fill="rgba(255,255,255,0.5)" letter-spacing="2">SLA OPERACIONAL</text>
+    <text x="0" y="40" font-size="36" font-weight="700" fill="#F4F6FA">98,6%</text>
+    <text x="0" y="68" font-size="12" fill="#7DEBC1">Estável · 7 dias</text>
+  </g>
+
+  <rect x="200" y="216" width="320" height="244" rx="14" fill="rgba(255,255,255,0.04)"/>
+  <text x="220" y="240" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)" letter-spacing="2">FLUXO DE MOVIMENTAÇÃO · 30 DIAS</text>
+  <polyline points="220,420 260,400 300,360 340,380 380,320 420,300 460,260 500,290" stroke="url(#dashAccent)" stroke-width="2.5" fill="none"/>
+  <polyline points="220,440 260,430 300,400 340,420 380,380 420,360 460,330 500,350" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+
+  <rect x="540" y="216" width="160" height="244" rx="14" fill="rgba(255,255,255,0.04)"/>
+  <text x="560" y="240" font-family="'Space Grotesk', sans-serif" font-size="11" fill="rgba(255,255,255,0.5)" letter-spacing="2">ALERTAS</text>
+  <g font-family="'Space Grotesk', sans-serif" font-size="12" fill="rgba(255,255,255,0.85)">
+    <circle cx="572" cy="270" r="4" fill="#FF6B6B"/>
+    <text x="588" y="274">3 retornos vencidos</text>
+    <circle cx="572" cy="306" r="4" fill="#FFC65A"/>
+    <text x="588" y="310">7 conferências</text>
+    <circle cx="572" cy="342" r="4" fill="#7DEBC1"/>
+    <text x="588" y="346">Sincronia OK</text>
+  </g>
+  <rect x="556" y="380" width="128" height="60" rx="10" fill="rgba(122,169,216,0.16)" stroke="rgba(122,169,216,0.4)"/>
+  <text x="572" y="406" font-family="'Space Grotesk', sans-serif" font-size="11" fill="#A6C4DD" letter-spacing="2">PRÓXIMA AÇÃO</text>
+  <text x="572" y="426" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="700" fill="#F4F6FA">Liberar embarque</text>
+</svg>
