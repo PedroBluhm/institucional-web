@@ -1,21 +1,19 @@
 # Deploy — Portainer + Traefik
 
-Stack pronto para subir a Bluhmwerk no seu Portainer, com TLS automático via
-Traefik/Let's Encrypt e redirect 301 de `bluhmwerk.com` para `www.bluhmwerk.com`.
+Stack pronto para subir a Bluhmwerk no seu Portainer, alinhado ao Traefik que
+você já tem rodando (network `proxy`, cert resolver `zerossl`). TLS automático
+via ZeroSSL/ACME e redirect 301 de `bluhmwerk.com` para `www.bluhmwerk.com`.
 
 ## Pré-requisitos na VPS
 
-1. **Traefik** rodando como container/stack separado, com:
-   - Entrypoints `web` (80) e `websecure` (443)
-   - Cert resolver chamado `letsencrypt`
-   - Network externa `traefik-public` (mesmo nome usado no `docker-compose.yml`)
-2. DNS: `A` ou `CNAME` de `bluhmwerk.com` e `www.bluhmwerk.com` apontando para
-   o IP da VPS.
-3. Portas 80/443 liberadas no firewall (Hostinger/Oracle/etc.).
-
-> Se sua network Traefik tem outro nome, edite o `docker-compose.yml` em duas
-> linhas: o bloco `networks:` final e a label
-> `traefik.docker.network=...`.
+1. **Traefik** já rodando com:
+   - Network externa `proxy` (atualmente em uso pelo seu Traefik)
+   - Cert resolver `zerossl` (com EAB_KID e EAB_HMAC nas envs)
+   - Entrypoints `web` (:80) e `websecure` (:443)
+   - Redirect global `web → websecure` (você já tem)
+2. **DNS**: registros `A` (ou `CNAME`) de `bluhmwerk.com` e `www.bluhmwerk.com`
+   apontando para o IP da VPS.
+3. **Portas** 80/443 liberadas no firewall.
 
 ## Subir pelo Portainer (recomendado)
 
@@ -41,10 +39,11 @@ docker compose up -d
 
 ## Como funciona o roteamento
 
-- `:80 bluhmwerk.com` / `:80 www.bluhmwerk.com` → redirect para HTTPS
-- `:443 bluhmwerk.com` → redirect 301 para `https://www.bluhmwerk.com`
+- `:80` qualquer host → redirect global do Traefik para `:443` (já no entrypoint)
+- `:443 bluhmwerk.com` → middleware `bluhmwerk-www` redireciona 301 para `https://www.bluhmwerk.com`
 - `:443 www.bluhmwerk.com` → serve o Next.js standalone na porta interna 3000
-- HSTS + headers de segurança aplicados via middleware Traefik
+- TLS provisionado via ZeroSSL/ACME para `bluhmwerk.com` + SAN `www.bluhmwerk.com`
+- HSTS + headers de segurança aplicados via middleware `bluhmwerk-headers`
 
 ## Trocar para HTTP-only (sem Traefik)
 

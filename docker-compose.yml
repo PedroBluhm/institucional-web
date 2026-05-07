@@ -10,31 +10,27 @@ services:
       NODE_ENV: production
       NEXT_TELEMETRY_DISABLED: "1"
     networks:
-      - traefik-public
+      - proxy
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=traefik-public"
+      - "traefik.docker.network=proxy"
 
-      # HTTP -> HTTPS redirect
-      - "traefik.http.routers.bluhmwerk-http.rule=Host(`bluhmwerk.com`) || Host(`www.bluhmwerk.com`)"
-      - "traefik.http.routers.bluhmwerk-http.entrypoints=web"
-      - "traefik.http.routers.bluhmwerk-http.middlewares=bluhmwerk-redirect"
-      - "traefik.http.middlewares.bluhmwerk-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.bluhmwerk-redirect.redirectscheme.permanent=true"
-
-      # HTTPS router
+      # HTTPS router (apex + www) — Traefik redireciona :80 -> :443 globalmente
       - "traefik.http.routers.bluhmwerk.rule=Host(`bluhmwerk.com`) || Host(`www.bluhmwerk.com`)"
       - "traefik.http.routers.bluhmwerk.entrypoints=websecure"
       - "traefik.http.routers.bluhmwerk.tls=true"
-      - "traefik.http.routers.bluhmwerk.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.bluhmwerk.tls.certresolver=zerossl"
+      - "traefik.http.routers.bluhmwerk.tls.domains[0].main=bluhmwerk.com"
+      - "traefik.http.routers.bluhmwerk.tls.domains[0].sans=www.bluhmwerk.com"
       - "traefik.http.routers.bluhmwerk.service=bluhmwerk-svc"
+      - "traefik.http.routers.bluhmwerk.middlewares=bluhmwerk-www,bluhmwerk-headers"
 
-      # apex -> www redirect (optional, comment out if you prefer apex)
+      # apex -> www (301)
       - "traefik.http.middlewares.bluhmwerk-www.redirectregex.regex=^https?://bluhmwerk\\.com/(.*)"
       - "traefik.http.middlewares.bluhmwerk-www.redirectregex.replacement=https://www.bluhmwerk.com/$${1}"
       - "traefik.http.middlewares.bluhmwerk-www.redirectregex.permanent=true"
 
-      # service definition
+      # backend (Next standalone roda na 3000 dentro do container)
       - "traefik.http.services.bluhmwerk-svc.loadbalancer.server.port=3000"
 
       # security headers
@@ -44,8 +40,7 @@ services:
       - "traefik.http.middlewares.bluhmwerk-headers.headers.contentTypeNosniff=true"
       - "traefik.http.middlewares.bluhmwerk-headers.headers.browserXssFilter=true"
       - "traefik.http.middlewares.bluhmwerk-headers.headers.referrerPolicy=strict-origin-when-cross-origin"
-      - "traefik.http.routers.bluhmwerk.middlewares=bluhmwerk-headers"
 
 networks:
-  traefik-public:
+  proxy:
     external: true
