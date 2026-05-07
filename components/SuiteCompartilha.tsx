@@ -79,7 +79,7 @@ export default function SuiteCompartilha() {
         <div className="max-w-[40rem]">
           <span className="eyebrow">Suite Compartilha</span>
           <h2 className="display-title mt-6 text-[clamp(2.2rem,4.2vw,4rem)] leading-[1]">
-            Cinco produtos. Uma mesma obsessão por controle real.
+            Cinco produtos. Um mesmo paradigma: modernização e corte de custos.
           </h2>
         </div>
         <p className="max-w-[28rem] text-base leading-8 text-white/62">

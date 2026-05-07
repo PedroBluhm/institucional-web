@@ -152,7 +152,7 @@ export default function Home() {
           </div>
 
           <div className="mt-10 flex flex-col gap-4 border-t border-white/8 pt-6 text-xs text-white/40 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} Bluhmwerk Tecnologia Ltda. Todos os direitos reservados.</p>
+            <p>© 2021-{new Date().getFullYear()} Bluhmwerk Tecnologia Ltda. Todos os direitos reservados.</p>
             <p className="font-display tracking-[0.04em]">
               Se o seu processo é único, sua tecnologia também deve ser.
             </p>

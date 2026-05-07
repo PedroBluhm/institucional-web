@@ -122,7 +122,7 @@ export default function ContactForm() {
 
         <div className="mt-2 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <button type="submit" className="btn-primary">
-            Enviar briefing
+            Entre em contato
             <span aria-hidden="true">→</span>
           </button>
           <p className="text-xs text-white/48">
