@@ -24,7 +24,7 @@ const products: Product[] = [
       "Conferências e ordens de serviço",
       "Relatórios operacionais",
     ],
-    image: "/products/compartilha-pallet.svg",
+    image: "/assets/CompartilhaPalletControl.png",
     status: "destaque",
   },
   {
@@ -34,7 +34,7 @@ const products: Product[] = [
     pitch:
       "Plataforma de logística para operações multi-planta, transportadoras parceiras e visão executiva da cadeia.",
     features: ["Roteirização", "Multi-planta", "Telemetria"],
-    image: "/products/compartilha-log.svg",
+    image: "/assets/CompartilhaLOG.png",
     status: "ativo",
   },
   {
@@ -44,7 +44,7 @@ const products: Product[] = [
     pitch:
       "Despacho, acionamento e acompanhamento de socorro automotivo em tempo real, com cobertura 24 horas.",
     features: ["Despacho ao vivo", "Geolocalização", "SLA 24/7"],
-    image: "/products/compartilha-socorro-auto.svg",
+    image: "/assets/CompartilhaSocorroAuto.png",
     status: "ativo",
   },
   {
@@ -54,7 +54,7 @@ const products: Product[] = [
     pitch:
       "Acionamento, triagem e gestão de atendimentos de saúde 24 horas com prontuário operacional integrado.",
     features: ["Triagem clínica", "Prontuário", "SLA 24/7"],
-    image: "/products/compartilha-socorro-saude.svg",
+    image: "/assets/CompartilhaSocorroSaude.png",
     status: "ativo",
   },
   {
@@ -64,10 +64,38 @@ const products: Product[] = [
     pitch:
       "Importação assistida com governança documental, integração aduaneira e visibilidade de processo de ponta a ponta.",
     features: ["DI / DUIMP", "Documentação", "Compliance"],
-    image: "/products/compartilha-import.svg",
+    image: "/assets/CompartilhaImport.png",
     status: "ativo",
   },
 ];
+
+function LogoSpotlight({
+  src,
+  alt,
+  size = 160,
+}: {
+  src: string;
+  alt: string;
+  size?: number;
+}) {
+  return (
+    <div className="relative flex items-center justify-center">
+      <div
+        className="absolute -inset-6 rounded-full bg-[radial-gradient(circle,rgba(122,169,216,0.2),transparent_70%)] blur-2xl"
+        aria-hidden="true"
+      />
+      <div className="relative flex aspect-square w-full max-w-[260px] items-center justify-center rounded-3xl bg-[radial-gradient(circle_at_50%_30%,#FFFFFF,#E9EEF6)] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_24px_60px_rgba(2,6,16,0.55)]">
+        <Image
+          src={src}
+          alt={alt}
+          width={size}
+          height={size}
+          className="h-auto w-full object-contain"
+        />
+      </div>
+    </div>
+  );
+}
 
 export default function SuiteCompartilha() {
   const featured = products.find((product) => product.status === "destaque")!;
@@ -130,14 +158,8 @@ export default function SuiteCompartilha() {
           </ul>
         </div>
 
-        <div className="relative min-h-[320px] border-l border-white/6 bg-[#0A1424]">
-          <Image
-            src={featured.image}
-            alt={`Visual do produto ${featured.name}`}
-            fill
-            className="object-cover"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-transparent to-[#0A1424]/40" />
+        <div className="relative flex items-center justify-center border-l border-white/6 bg-[linear-gradient(180deg,#0A1424,#070D1B)] p-10 md:p-14">
+          <LogoSpotlight src={featured.image} alt={featured.name} size={260} />
         </div>
       </article>
 
@@ -147,13 +169,8 @@ export default function SuiteCompartilha() {
             key={product.slug}
             className="surface-card group flex flex-col overflow-hidden transition hover:-translate-y-1"
           >
-            <div className="relative aspect-[4/3] overflow-hidden border-b border-white/6 bg-[#0A1424]">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover transition duration-500 group-hover:scale-[1.04]"
-              />
+            <div className="flex aspect-square items-center justify-center border-b border-white/6 bg-[linear-gradient(180deg,#0A1424,#070D1B)] p-8">
+              <LogoSpotlight src={product.image} alt={product.name} size={170} />
             </div>
             <div className="flex flex-1 flex-col p-6">
               <span className="text-[0.65rem] uppercase tracking-[0.24em] text-white/42">
