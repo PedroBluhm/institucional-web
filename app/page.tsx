@@ -82,13 +82,16 @@ export default function Home() {
         <div className="section-shell py-10">
           <div className="grid gap-8 md:grid-cols-[1.2fr_1fr_1fr]">
             <div>
-              <Link href="/" className="inline-flex items-center">
+              <Link
+                href="/"
+                className="inline-flex items-center rounded-2xl bg-[linear-gradient(180deg,rgba(244,246,250,0.96),rgba(232,237,245,0.92))] px-4 py-3 shadow-[0_12px_28px_rgba(2,6,15,0.35)]"
+              >
                 <Image
                   src="/assets/BluhmwerkLogo.png"
                   alt="Bluhmwerk Tecnologia"
-                  width={420}
-                  height={124}
-                  className="h-10 w-auto object-contain brightness-0 invert"
+                  width={2008}
+                  height={591}
+                  className="h-9 w-auto object-contain"
                 />
               </Link>
               <p className="mt-4 max-w-[26rem] text-sm leading-7 text-white/52">
