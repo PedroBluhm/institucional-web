@@ -87,7 +87,7 @@ No identifiable faces or brands, 16:9, 4K, 24fps, loopable.
 
 ## 3. Imagens — Nanobanana
 
-> Substitua os SVGs em `/public/products/` ou `/public/decorative/` pelas saídas (PNG/WebP). Mantenha a aspect ratio indicada.
+> Substitua os assets em `/public/assets/` ou `/public/decorative/` pelas saídas (PNG/WebP). Mantenha a aspect ratio indicada.
 
 ### 3.1 Capa abstrata para o Manifesto (`/public/decorative/manifesto-bg.webp`)
 
@@ -98,17 +98,16 @@ Floating glass plates suggest data layers. Mint-teal #7DEBC1 accent on a single 
 of intersection. Premium B2B technology aesthetic. 16:9, soft grain, no text.
 ```
 
-### 3.2 Cards de produto (substituir SVGs em `/public/products/`)
+### 3.2 Cards de produto
 
-Use o mesmo tronco visual; troque o assunto central:
+Os logos oficiais já estão em `/public/assets/Compartilha*.png`. Eles têm
+texto preto e fundo branco — o site renderiza cada um numa "spotlight" clara
+sobre o card escuro. Se quiser regenerar versões alternativas (transparentes,
+ou em fundo dark com texto branco), use estes prompts no Nanobanana mantendo
+o brasão (compass + alvo + ilustração interna):
 
-- `compartilha-pallet.webp` (4:3): "studio macro of a deep-navy euro pallet with holographic blueprint of stacking topology floating above, steel-blue and teal accents"
-- `compartilha-log.webp` (4:3): "matte black logistics truck silhouette on a dark grid floor, geofence rings expanding in teal, premium dark"
-- `compartilha-socorro-auto.webp` (4:3): "tow truck silhouette under cinematic blue rim light, red-cross hologram subtle on the door, no logos"
-- `compartilha-socorro-saude.webp` (4:3): "abstract heartbeat waveform crossing a dark navy field, soft red-cross icon, clinical-grade premium tech"
-- `compartilha-import.webp` (4:3): "stack of shipping containers on dark dock at dusk, holographic DI/DUIMP document layers floating, teal accent lines"
-
-Sempre adicionar: `no readable text, no logos, navy + steel + mint-teal palette, premium editorial lighting, no people`.
+- "Compartilha logo redesign on transparent background, navy compass with white target ring, orange location pin on top, centered illustration: euro pallet stack with arrows, brand text 'Compartilha Pallet Control' below in geometric sans, vector style"
+- Aplicar o mesmo molde para LOG (caixas empilhadas verde), Socorro Auto 24H (guincho preto), Socorro Saúde 24H (ambulância navy com cruz vermelha) e Import (container verde).
 
 ### 3.3 OG / Social (`/public/og-image.webp`, 1200×630)
 
@@ -134,7 +133,7 @@ soft inner glow. Matches a product family system. No text.
 | ----------------------------------- | --------------------------------------------- | ------------------------------- |
 | Hero — vídeo principal              | `/public/hero.mp4` (+ `hero.webm` opcional)   | `components/Hero.tsx`           |
 | Hero — poster (fallback)            | `/public/decorative/dashboard-mock.svg`       | `components/Hero.tsx`           |
-| Cards Suite Compartilha             | `/public/products/compartilha-*.svg/.webp`    | `components/SuiteCompartilha.tsx` |
+| Cards Suite Compartilha             | `/public/assets/Compartilha*.png`             | `components/SuiteCompartilha.tsx` |
 | OG/Social                           | `/public/og-image.webp`                       | adicionar em `app/layout.tsx` (`openGraph.images`) |
 | Decoração de seção                  | `/public/decorative/*.svg/.webp`              | livre                           |
 

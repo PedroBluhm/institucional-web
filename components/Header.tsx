@@ -41,20 +41,17 @@ export default function Header() {
         <div className="flex items-center justify-between rounded-full border border-white/8 bg-white/[0.025] px-4 py-2.5 backdrop-blur-xl md:px-5">
           <Link
             href="/"
-            className="group flex items-center gap-2.5 text-white"
-            aria-label="Bluhmwerk - Início"
+            className="group inline-flex items-center text-white"
+            aria-label="Bluhmwerk Tecnologia - Início"
           >
             <Image
-              src="/logo-mark.svg"
-              alt=""
-              width={28}
-              height={28}
-              className="h-7 w-7 transition group-hover:rotate-90"
+              src="/assets/BluhmwerkLogo.png"
+              alt="Bluhmwerk Tecnologia"
+              width={420}
+              height={124}
               priority
+              className="h-9 w-auto object-contain brightness-0 invert md:h-10"
             />
-            <span className="font-display text-base font-semibold tracking-[-0.02em]">
-              Bluhmwerk
-            </span>
           </Link>
 
           <nav className="hidden items-center gap-7 md:flex">
