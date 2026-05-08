@@ -57,10 +57,21 @@ Aí basta apontar um Nginx/Cloudflare/etc. para `http://<ip>:3000`.
 
 ## Variáveis de ambiente
 
-O site é estático/SSG no momento — não precisa de `.env`. Quando conectar o
-formulário a um endpoint (Resend, Formspree, sua própria API), adicione um
-bloco `environment:` no `docker-compose.yml` ou um arquivo `.env` (já está no
-`.gitignore`).
+O formulário de contato envia via [Resend](https://resend.com). No Portainer,
+em **Stack → Environment variables**, adiciona:
+
+| Chave | Valor | Obrigatório? |
+|-------|-------|--------------|
+| `RESEND_API_KEY` | API key do Resend (`re_...`) | sim, pra o form funcionar |
+| `CONTACT_TO_EMAIL` | E-mail que recebe os briefings | opcional (default: `comercial@bluhmwerk.com`) |
+| `CONTACT_FROM_EMAIL` | Remetente verificado no Resend | opcional (default: `Bluhmwerk Site <site@bluhmwerk.com>`) |
+
+> Sem `RESEND_API_KEY` o formulário cai automaticamente no fallback `mailto:`
+> — o usuário consegue enviar pelo cliente de e-mail dele.
+
+Pra criar a chave: dashboard do Resend → API Keys → Create. Pra o `from`
+funcionar, o domínio `bluhmwerk.com` precisa estar verificado no Resend
+(adicionar registros DNS SPF/DKIM que eles fornecem).
 
 ## Logs e troubleshooting
 

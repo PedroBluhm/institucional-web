@@ -9,6 +9,9 @@ services:
     environment:
       NODE_ENV: production
       NEXT_TELEMETRY_DISABLED: "1"
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      CONTACT_TO_EMAIL: ${CONTACT_TO_EMAIL:-comercial@bluhmwerk.com}
+      CONTACT_FROM_EMAIL: ${CONTACT_FROM_EMAIL:-Bluhmwerk Site <site@bluhmwerk.com>}
     networks:
       - proxy
     labels:

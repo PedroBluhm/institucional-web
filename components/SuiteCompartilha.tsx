@@ -1,73 +1,6 @@
 import Image from "next/image";
-
-type Product = {
-  slug: string;
-  name: string;
-  category: string;
-  pitch: string;
-  features: string[];
-  image: string;
-  status: "destaque" | "ativo";
-};
-
-const products: Product[] = [
-  {
-    slug: "pallet-control",
-    name: "Compartilha Pallet Control",
-    category: "Ativos logísticos",
-    pitch:
-      "Controle de pallets, embalagens retornáveis e ativos circulantes com visão ponta a ponta. Operadores, plantas, movimentações de envio e retorno, importação XML/NFe, conferências e relatórios — tudo em um produto só.",
-    features: [
-      "Operadores e plantas",
-      "Envio e retorno",
-      "Importação XML / NFe",
-      "Conferências e ordens de serviço",
-      "Relatórios operacionais",
-    ],
-    image: "/assets/CompartilhaPalletControl.png",
-    status: "destaque",
-  },
-  {
-    slug: "log",
-    name: "Compartilha LOG",
-    category: "Logística e distribuição",
-    pitch:
-      "Plataforma de logística para operações multi-planta, transportadoras parceiras e visão executiva da cadeia.",
-    features: ["Roteirização", "Multi-planta", "Telemetria"],
-    image: "/assets/CompartilhaLOG.png",
-    status: "ativo",
-  },
-  {
-    slug: "socorro-auto",
-    name: "Compartilha Socorro Auto 24H",
-    category: "Assistência veicular",
-    pitch:
-      "Despacho, acionamento e acompanhamento de socorro automotivo em tempo real, com cobertura 24 horas.",
-    features: ["Despacho ao vivo", "Geolocalização", "SLA 24/7"],
-    image: "/assets/CompartilhaSocorroAuto.png",
-    status: "ativo",
-  },
-  {
-    slug: "socorro-saude",
-    name: "Compartilha Socorro Saúde 24H",
-    category: "Assistência médica",
-    pitch:
-      "Acionamento, triagem e gestão de atendimentos de saúde 24 horas com prontuário operacional integrado.",
-    features: ["Triagem clínica", "Prontuário", "SLA 24/7"],
-    image: "/assets/CompartilhaSocorroSaude.png",
-    status: "ativo",
-  },
-  {
-    slug: "import",
-    name: "Compartilha Import",
-    category: "Comércio exterior",
-    pitch:
-      "Importação assistida com governança documental, integração aduaneira e visibilidade de processo de ponta a ponta.",
-    features: ["DI / DUIMP", "Documentação", "Compliance"],
-    image: "/assets/CompartilhaImport.png",
-    status: "ativo",
-  },
-];
+import Link from "next/link";
+import { products } from "@/lib/products";
 
 function LogoSpotlight({
   src,
@@ -116,8 +49,9 @@ export default function SuiteCompartilha() {
         </p>
       </div>
 
-      <article
-        className="surface-card mt-12 grid gap-0 overflow-hidden lg:grid-cols-[1.05fr_0.95fr]"
+      <Link
+        href={`/produtos/${featured.slug}`}
+        className="surface-card mt-12 grid gap-0 overflow-hidden transition hover:-translate-y-1 lg:grid-cols-[1.05fr_0.95fr]"
         aria-labelledby={`product-${featured.slug}`}
       >
         <div className="flex flex-col justify-between p-8 md:p-12">
@@ -142,31 +76,37 @@ export default function SuiteCompartilha() {
             </p>
           </div>
 
-          <ul className="mt-10 grid gap-2 sm:grid-cols-2">
-            {featured.features.map((feature) => (
-              <li
-                key={feature}
-                className="flex items-center gap-2 text-sm text-white/72"
-              >
-                <span
-                  className="h-1.5 w-1.5 rounded-full bg-[var(--signal)]"
-                  aria-hidden="true"
-                />
-                {feature}
-              </li>
-            ))}
-          </ul>
+          <div className="mt-10">
+            <ul className="grid gap-2 sm:grid-cols-2">
+              {featured.features.map((feature) => (
+                <li
+                  key={feature}
+                  className="flex items-center gap-2 text-sm text-white/72"
+                >
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-[var(--signal)]"
+                    aria-hidden="true"
+                  />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <span className="mt-8 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.24em] text-[var(--signal)]">
+              Ver página do produto <span aria-hidden="true">→</span>
+            </span>
+          </div>
         </div>
 
         <div className="relative flex items-center justify-center border-l border-white/6 bg-[linear-gradient(180deg,#0A1424,#070D1B)] p-10 md:p-14">
           <LogoSpotlight src={featured.image} alt={featured.name} size={260} />
         </div>
-      </article>
+      </Link>
 
       <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {others.map((product) => (
-          <article
+          <Link
             key={product.slug}
+            href={`/produtos/${product.slug}`}
             className="surface-card group flex flex-col overflow-hidden transition hover:-translate-y-1"
           >
             <div className="flex aspect-square items-center justify-center border-b border-white/6 bg-[linear-gradient(180deg,#0A1424,#070D1B)] p-8">
@@ -182,18 +122,11 @@ export default function SuiteCompartilha() {
               <p className="mt-3 flex-1 text-sm leading-7 text-white/60">
                 {product.pitch}
               </p>
-              <div className="mt-5 flex flex-wrap gap-1.5">
-                {product.features.map((feature) => (
-                  <span
-                    key={feature}
-                    className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-1 text-[0.62rem] uppercase tracking-[0.18em] text-white/55"
-                  >
-                    {feature}
-                  </span>
-                ))}
-              </div>
+              <span className="mt-5 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.24em] text-[var(--steel-light)] transition group-hover:text-white">
+                Conhecer <span aria-hidden="true">→</span>
+              </span>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
     </section>

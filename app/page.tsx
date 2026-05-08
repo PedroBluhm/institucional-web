@@ -1,13 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import Capabilities from "@/components/Capabilities";
+import CasesPreview from "@/components/CasesPreview";
 import ContactForm from "@/components/ContactForm";
+import Founder from "@/components/Founder";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Institutional from "@/components/Institutional";
 import Manifesto from "@/components/Manifesto";
 import Method from "@/components/Method";
+import Reveal from "@/components/Reveal";
 import SuiteCompartilha from "@/components/SuiteCompartilha";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import { whatsappLink } from "@/lib/site";
 
 export default function Home() {
   return (
@@ -16,11 +21,27 @@ export default function Home() {
 
       <main className="relative z-10">
         <Hero />
-        <Manifesto />
-        <Capabilities />
-        <SuiteCompartilha />
-        <Method />
-        <Institutional />
+        <Reveal as="section">
+          <Manifesto />
+        </Reveal>
+        <Reveal as="section">
+          <Capabilities />
+        </Reveal>
+        <Reveal as="section">
+          <SuiteCompartilha />
+        </Reveal>
+        <Reveal as="section">
+          <CasesPreview />
+        </Reveal>
+        <Reveal as="section">
+          <Method />
+        </Reveal>
+        <Reveal as="section">
+          <Founder />
+        </Reveal>
+        <Reveal as="section">
+          <Institutional />
+        </Reveal>
 
         <section id="contato" className="section-shell pb-20 md:pb-24">
           <div className="surface-card grid gap-10 overflow-hidden p-8 md:p-12 xl:grid-cols-[0.95fr_1.05fr] xl:p-14">
@@ -36,6 +57,19 @@ export default function Home() {
               </p>
 
               <div className="mt-10 grid gap-3 sm:grid-cols-2">
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl border border-[var(--signal)]/40 bg-[var(--signal)]/8 p-5 transition hover:border-[var(--signal)]/70 hover:bg-[var(--signal)]/12"
+                >
+                  <p className="text-[0.65rem] uppercase tracking-[0.24em] text-[var(--signal)]">
+                    WhatsApp
+                  </p>
+                  <p className="mt-3 font-display text-lg font-semibold text-white">
+                    Conversar agora
+                  </p>
+                </a>
                 <a
                   href="mailto:comercial@bluhmwerk.com"
                   className="rounded-2xl border border-white/8 bg-white/[0.03] p-5 transition hover:border-[var(--steel-light)]/60 hover:bg-white/[0.06]"
@@ -58,16 +92,12 @@ export default function Home() {
                     +55 11 92104-5407
                   </p>
                 </a>
-                <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-5 sm:col-span-2">
+                <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-5">
                   <p className="text-[0.65rem] uppercase tracking-[0.24em] text-white/42">
                     Escritório
                   </p>
                   <p className="mt-3 text-sm leading-6 text-white/82">
                     São Paulo — SP, Brasil
-                    <br />
-                    <span className="text-white/52">
-                      Atendimento remoto e presencial sob agendamento
-                    </span>
                   </p>
                 </div>
               </div>
@@ -106,22 +136,22 @@ export default function Home() {
               </p>
               <ul className="mt-4 space-y-3 text-sm text-white/72">
                 <li>
-                  <Link href="#manifesto" className="hover:text-white">
+                  <Link href="/#manifesto" className="hover:text-white">
                     Manifesto
                   </Link>
                 </li>
                 <li>
-                  <Link href="#capacidades" className="hover:text-white">
-                    Capacidades
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#suite" className="hover:text-white">
+                  <Link href="/#suite" className="hover:text-white">
                     Suite Compartilha
                   </Link>
                 </li>
                 <li>
-                  <Link href="#metodo" className="hover:text-white">
+                  <Link href="/cases" className="hover:text-white">
+                    Cases
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#metodo" className="hover:text-white">
                     Método
                   </Link>
                 </li>
@@ -146,19 +176,34 @@ export default function Home() {
                     +55 11 92104-5407
                   </a>
                 </li>
+                <li>
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
+                    WhatsApp
+                  </a>
+                </li>
                 <li>São Paulo — SP, Brasil</li>
               </ul>
             </div>
           </div>
 
           <div className="mt-10 flex flex-col gap-4 border-t border-white/8 pt-6 text-xs text-white/40 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} Bluhmwerk Tecnologia Ltda. Todos os direitos reservados.</p>
+            <p>
+              © {new Date().getFullYear()} Bluhmwerk Tecnologia Ltda. Todos os
+              direitos reservados.
+            </p>
             <p className="font-display tracking-[0.04em]">
               Se o seu processo é único, sua tecnologia também deve ser.
             </p>
           </div>
         </div>
       </footer>
+
+      <WhatsAppButton />
     </div>
   );
 }
