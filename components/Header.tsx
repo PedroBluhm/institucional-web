@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const navigation = [
-  { label: "Manifesto", href: "#manifesto" },
-  { label: "Capacidades", href: "#capacidades" },
-  { label: "Suite Compartilha", href: "#suite" },
-  { label: "Método", href: "#metodo" },
-  { label: "Contato", href: "#contato" },
+  { label: "Manifesto", href: "/#manifesto" },
+  { label: "Suite Compartilha", href: "/#suite" },
+  { label: "Cases", href: "/cases" },
+  { label: "Método", href: "/#metodo" },
+  { label: "Contato", href: "/#contato" },
 ];
 
 export default function Header() {
@@ -68,7 +68,7 @@ export default function Header() {
 
           <div className="hidden md:block">
             <Link
-              href="#contato"
+              href="/#contato"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0E1A2C] px-5 py-2.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_12px_28px_rgba(14,26,44,0.35)] transition hover:-translate-y-px hover:bg-[#1B2A3D]"
             >
               Falar com o time
@@ -116,7 +116,7 @@ export default function Header() {
                 </Link>
               ))}
               <Link
-                href="#contato"
+                href="/#contato"
                 onClick={() => setMenuOpen(false)}
                 className="btn-primary mt-2 justify-center"
               >
