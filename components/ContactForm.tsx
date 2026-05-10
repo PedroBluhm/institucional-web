@@ -171,13 +171,9 @@ export default function ContactForm() {
         </label>
 
         <div className="mt-2 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <button
-            type="submit"
-            disabled={status === "loading"}
-            className="btn-primary disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {status === "loading" ? "Enviando..." : "Enviar briefing"}
-            {status !== "loading" ? <span aria-hidden="true">→</span> : null}
+          <button type="submit" className="btn-primary">
+            Entre em contato
+            <span aria-hidden="true">→</span>
           </button>
           <p
             className={`text-xs ${
