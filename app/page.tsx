@@ -3,7 +3,6 @@ import Link from "next/link";
 import Capabilities from "@/components/Capabilities";
 import CasesPreview from "@/components/CasesPreview";
 import ContactForm from "@/components/ContactForm";
-import Founder from "@/components/Founder";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Institutional from "@/components/Institutional";
@@ -35,9 +34,6 @@ export default function Home() {
         </Reveal>
         <Reveal as="section">
           <Method />
-        </Reveal>
-        <Reveal as="section">
-          <Founder />
         </Reveal>
         <Reveal as="section">
           <Institutional />
