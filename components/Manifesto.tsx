@@ -15,10 +15,10 @@ const principles = [
 
 export default function Manifesto() {
   return (
-    <section id="manifesto" className="section-shell py-24 md:py-32">
+    <section id="quem-somos" className="section-shell py-24 md:py-32">
       <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
         <div>
-          <span className="eyebrow">Manifesto</span>
+          <span className="eyebrow">Quem somos</span>
           <h2 className="display-title mt-6 text-[clamp(2.4rem,4.6vw,4.4rem)] leading-[0.98]">
             Se o seu processo é único, sua tecnologia também deve ser.
           </h2>
@@ -32,7 +32,11 @@ export default function Manifesto() {
         </p>
       </div>
 
-      <div className="mt-16 grid gap-px overflow-hidden rounded-[28px] border border-white/8 bg-white/8 lg:grid-cols-3">
+      <div className="mt-16 mb-10">
+        <span className="eyebrow">Missão e valores</span>
+      </div>
+
+      <div className="grid gap-px overflow-hidden rounded-[28px] border border-white/8 bg-white/8 lg:grid-cols-3">
         {principles.map((principle, index) => (
           <article
             key={principle.label}
@@ -43,7 +47,7 @@ export default function Manifesto() {
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span className="text-xs uppercase tracking-[0.24em] text-white/42">
-                Pilar
+                Valor
               </span>
             </div>
             <h3 className="mt-6 font-display text-2xl font-semibold text-white">

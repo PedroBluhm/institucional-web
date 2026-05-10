@@ -30,12 +30,12 @@ export default function Hero() {
             </p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <Link href="#contato" className="btn-primary">
-                Solicitar diagnóstico
-                <span aria-hidden="true">→</span>
+              <Link href="#solucoes" className="btn-secondary">
+                Conheça nossas soluções próprias
               </Link>
-              <Link href="#suite" className="btn-secondary">
-                Conhecer a Suite Compartilha
+              <Link href="#contato" className="btn-primary">
+                Entre em contato
+                <span aria-hidden="true">→</span>
               </Link>
             </div>
 
