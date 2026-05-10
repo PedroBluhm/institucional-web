@@ -84,8 +84,7 @@ export default function Hero() {
                   poster="/decorative/dashboard-mock.svg"
                   preload="metadata"
                 >
-                  <source src="/hero.mp4" type="video/mp4" />
-                  <source src="/hero.webm" type="video/webm" />
+                  <source src="/assets/hero_1.mp4" type="video/mp4" />
                 </video>
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#040810] via-transparent to-transparent" />
               </div>
