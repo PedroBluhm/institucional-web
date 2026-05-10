@@ -8,7 +8,6 @@ import Hero from "@/components/Hero";
 import Institutional from "@/components/Institutional";
 import Manifesto from "@/components/Manifesto";
 import Method from "@/components/Method";
-import Reveal from "@/components/Reveal";
 import SuiteCompartilha from "@/components/SuiteCompartilha";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { whatsappLink } from "@/lib/site";
@@ -20,24 +19,12 @@ export default function Home() {
 
       <main className="relative z-10">
         <Hero />
-        <Reveal>
-          <Manifesto />
-        </Reveal>
-        <Reveal>
-          <Capabilities />
-        </Reveal>
-        <Reveal>
-          <SuiteCompartilha />
-        </Reveal>
-        <Reveal>
-          <CasesPreview />
-        </Reveal>
-        <Reveal>
-          <Method />
-        </Reveal>
-        <Reveal>
-          <Institutional />
-        </Reveal>
+        <Manifesto />
+        <Capabilities />
+        <SuiteCompartilha />
+        <CasesPreview />
+        <Method />
+        <Institutional />
 
         <section id="contato" className="section-shell pb-20 md:pb-24">
           <div className="surface-card grid gap-10 overflow-hidden p-8 md:p-12 xl:grid-cols-[0.95fr_1.05fr] xl:p-14">
