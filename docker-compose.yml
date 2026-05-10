@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: bluhmwerk-web:latest
+    pull_policy: build
     restart: unless-stopped
     environment:
       NODE_ENV: production
