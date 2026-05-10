@@ -20,22 +20,22 @@ export default function Home() {
 
       <main className="relative z-10">
         <Hero />
-        <Reveal as="section">
+        <Reveal>
           <Manifesto />
         </Reveal>
-        <Reveal as="section">
+        <Reveal>
           <Capabilities />
         </Reveal>
-        <Reveal as="section">
+        <Reveal>
           <SuiteCompartilha />
         </Reveal>
-        <Reveal as="section">
+        <Reveal>
           <CasesPreview />
         </Reveal>
-        <Reveal as="section">
+        <Reveal>
           <Method />
         </Reveal>
-        <Reveal as="section">
+        <Reveal>
           <Institutional />
         </Reveal>
 
