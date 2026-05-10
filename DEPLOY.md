@@ -80,9 +80,27 @@ docker logs -f bluhmwerk-web
 docker compose ps
 ```
 
-- Erro de network `traefik-public not found`: a rede precisa existir antes
-  (`docker network create traefik-public`).
+- **Erro `pull access denied for bluhmwerk-web`** ao atualizar no Portainer:
+  você clicou em "Re-pull image and redeploy". Como a imagem é buildada
+  localmente (não está em registry), o pull falha. Use **"Update the stack"**
+  sem o re-pull. O `pull_policy: build` no compose já protege, mas a opção
+  visual do Portainer pode ignorá-lo.
+- Erro de network `proxy not found`: a rede do Traefik precisa existir
+  (`docker network create proxy`) e o nome bater no compose.
 - Site sobe mas não responde no domínio: confira labels do Traefik e DNS
   apontando para a VPS.
 - Build falha: rode `docker compose build --no-cache` e leia o output do
   passo `npm run build`.
+
+## Como atualizar o site sem dor
+
+Cada `git push` na `main` quebra a imagem cacheada — você precisa rebuildar:
+
+1. **Portainer** → Stacks → bluhmwerk-web
+2. Clica em **"Pull and redeploy"** ❌ NÃO USE — vai dar pull error
+3. Clica em **"Editor"** → não precisa mudar nada → **"Update the stack"**
+   - Marca **"Re-build image"** se aparecer
+   - **NÃO marca** "Re-pull image"
+4. Aguarda ~2 min pro build
+
+Alternativa: SSH na VPS, `cd` no path do stack, `docker compose up -d --build`.
