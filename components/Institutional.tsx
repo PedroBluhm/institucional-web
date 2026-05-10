@@ -18,9 +18,7 @@ export default function Institutional() {
               Fundada em 2021, em São Paulo. Liderada por quem desenvolve.
             </h2>
             <p className="mt-7 max-w-[34rem] text-[1.02rem] leading-8 text-white/68">
-              Sob a liderança do fundador e desenvolvedor principal{" "}
-              <span className="text-white">Pedro Bluhm</span>, a Bluhmwerk se
-              posiciona como uma desenvolvedora especializada em soluções
+              A Bluhmwerk se posiciona como uma desenvolvedora especializada em soluções
               digitais sob medida — com foco em eficiência operacional,
               integração sistêmica e controle de processos logísticos e
               corporativos.
