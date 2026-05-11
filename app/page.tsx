@@ -69,11 +69,15 @@ export default function Home() {
                 <a
                   href="mailto:comercial@bluhmwerk.com"
                   className="rounded-2xl border border-white/8 bg-white/[0.03] p-5 transition hover:border-[var(--steel-light)]/60 hover:bg-white/[0.06]"
+                  style={{ containerType: "inline-size" }}
                 >
                   <p className="text-[0.65rem] uppercase tracking-[0.24em] text-white/42">
                     Comercial
                   </p>
-                  <p className="mt-3 font-display text-lg font-semibold text-white">
+                  <p
+                    className="mt-3 whitespace-nowrap font-display font-semibold text-white"
+                    style={{ fontSize: "clamp(0.7rem, 6cqi, 1.125rem)" }}
+                  >
                     comercial@bluhmwerk.com
                   </p>
                 </a>
@@ -162,7 +166,7 @@ export default function Home() {
                 <li>
                   <a
                     href="mailto:comercial@bluhmwerk.com"
-                    className="hover:text-white"
+                    className="break-all hover:text-white"
                   >
                     comercial@bluhmwerk.com
                   </a>
@@ -189,8 +193,8 @@ export default function Home() {
 
           <div className="mt-10 flex flex-col gap-4 border-t border-white/8 pt-6 text-xs text-white/40 md:flex-row md:items-center md:justify-between">
             <p>
-              © {new Date().getFullYear()} Bluhmwerk Tecnologia Ltda. Todos os
-              direitos reservados.
+              © 2021-{new Date().getFullYear()} Bluhmwerk Tecnologia Ltda. Todos
+              os direitos reservados.
             </p>
             <p className="font-display tracking-[0.04em]">
               Se o seu processo é único, sua tecnologia também deve ser.
