@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Capabilities from "@/components/Capabilities";
 import CasesPreview from "@/components/CasesPreview";
 import ContactForm from "@/components/ContactForm";
 import Header from "@/components/Header";
@@ -22,7 +23,10 @@ export default function Home() {
         <Reveal>
           <Manifesto />
         </Reveal>
-        <Reveal as="section">
+        <Reveal>
+          <Capabilities />
+        </Reveal>
+        <Reveal>
           <SuiteCompartilha />
         </Reveal>
         <Reveal>
@@ -132,13 +136,13 @@ export default function Home() {
               </p>
               <ul className="mt-4 space-y-3 text-sm text-white/72">
                 <li>
-                  <Link href="/#quem-somos" className="hover:text-white">
-                    Quem somos
+                  <Link href="/#manifesto" className="hover:text-white">
+                    Manifesto
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#solucoes" className="hover:text-white">
-                    Nossas soluções
+                  <Link href="/#suite" className="hover:text-white">
+                    Suite Compartilha
                   </Link>
                 </li>
                 <li>
@@ -188,7 +192,10 @@ export default function Home() {
           </div>
 
           <div className="mt-10 flex flex-col gap-4 border-t border-white/8 pt-6 text-xs text-white/40 md:flex-row md:items-center md:justify-between">
-            <p>© 2021-{new Date().getFullYear()} Bluhmwerk Tecnologia Ltda. Todos os direitos reservados.</p>
+            <p>
+              © 2021-{new Date().getFullYear()} Bluhmwerk Tecnologia Ltda. Todos
+              os direitos reservados.
+            </p>
             <p className="font-display tracking-[0.04em]">
               Se o seu processo é único, sua tecnologia também deve ser.
             </p>
